@@ -20,13 +20,17 @@ public class Epic_Leaderboard {
     }
 
     public void displayLeaderboard() {
+        // Sort the results in descending order by score
         Collections.sort(results, (a, b) -> Integer.compare(b.score, a.score));
+
+        // Display the leaderboard
         System.out.println("\nLeaderboard: ");
         for (int i = 0; i < results.size(); i++) {
             QuizResult result = results.get(i);
             System.out.println((i + 1) + ". " + result.name + " - Score: " + result.score);
         }
 
+        // Calculate and display mean, median, and standard deviation
         int[] scores = results.stream().mapToInt(result -> result.score).toArray();
         double mean = calculateMean(scores);
         int median = calculateMedian(scores);

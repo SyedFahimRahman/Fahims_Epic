@@ -11,10 +11,13 @@ import static Epic.Epic.generateRandomOrder;
 
 public class Epicc {
     public static void main(String[] args) {
+        // Create an instance of the leaderboard
         Epic_Leaderboard leaderboard = new Epic_Leaderboard();
 
+        // Create a scanner for user input
         Scanner scanner = new Scanner(System.in);
 
+        // Display the quiz selection menu
         System.out.println("Welcome to the Mind Mingle!");
         System.out.println("Which type of quiz would you like to play?");
         System.out.println("1. Random");
@@ -22,19 +25,22 @@ public class Epicc {
         System.out.println("3. Speedrun");
         System.out.print("Enter your choice (1/2/3): ");
 
+        // Read the user's choice
         int option = scanner.nextInt();
 
+        // Initialize the user's quiz score
         int quizScore = 0;
 
+        // Depending on the user's choice, call the appropriate quiz method
         switch (option) {
             case 1:
-                quizScore = random();
+                quizScore = random();   // Random quiz
                 break;
             case 2:
-                quizScore = difficultyLevel();
+                quizScore = difficultyLevel();  // Easy to Hard quiz
                 break;
             case 3:
-                quizScore = speedrun();
+                quizScore = speedrun(); // Speedrun quiz
                 break;
             default:
                 System.out.println("Invalid choice.");
@@ -48,6 +54,7 @@ public class Epicc {
     }
 
     public static int random() {
+        // Define questions, answer choices, correct answers, and other variables for the "Random" quiz
         String[] questions = {
                 "What is a Hasse diagram?",
                 "What is a Lattice?",
@@ -90,11 +97,13 @@ public class Epicc {
 
         };
         char[] correctAnswers = {'A', 'B', 'C', 'D', 'A', 'B', 'B', 'A', 'C', 'D', 'B', 'C', 'A', 'D', 'B', 'D', 'A', 'A'};
+
         int score = 0;
         int[] questionOrder = generateRandomOrder(questions.length);
 
         Scanner scanner = new Scanner(System.in);
 
+        // Loop through the shuffled questions and present them to the user
         for (int i = 0; i < questions.length; i++) {
             int questionIndex = questionOrder[i];
             System.out.println(questions[questionIndex]);
@@ -102,12 +111,14 @@ public class Epicc {
             String[] shuffledChoices = shuffleArray(answerChoices[questionIndex]);
             char correctAnswer = correctAnswers[questionIndex]; // Get the correct answer for this question
 
+            // Display answer choices and prompt the user for an answer
             for (int j = 0; j < shuffledChoices.length; j++) {
                 System.out.println((char) ('A' + j) + ": " + shuffledChoices[j]);
             }
             System.out.print("Enter your answer (A, B, C, or D): ");
             char userAnswer = scanner.next().toUpperCase().charAt(0); // Read the user's answer
 
+            // Check if the user's answer is correct, update the score, and provide feedback
             if (userAnswer == correctAnswer) { // Compare with the correct answer for this question
                 System.out.println("Correct!");
                 score++;
@@ -122,6 +133,7 @@ public class Epicc {
     }
 
     public static int difficultyLevel() {
+        // Define questions, answer choices, correct answers, and other variables for the "difficulty_level" quiz
         String[] easyQuestions = {
                 "What is a Hasse diagram?",
                 "What does CPU stand for?",
@@ -207,6 +219,7 @@ public class Epicc {
     }
 
     public static int speedrun() {
+        // Define questions, answer choices, correct answers, and other variables for the "Speedrun" quiz
         String[] questions = {
                 "What is a Hasse diagram?",
                 "What is a Lattice?",

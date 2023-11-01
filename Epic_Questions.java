@@ -13,6 +13,7 @@ public class Epic {
 
 
     public static void questionsAnswers() {
+        // Questions, answer choices, and correct answers for different difficulty levels
         String[] easyQuestions = {
                 "What is a Hasse diagram?",
                 "What does CPU stand for?",
@@ -74,6 +75,7 @@ public class Epic {
 
         char[] hardCorrectAnswers = {'C', 'A', 'A', 'C', 'D', 'A'};
 
+        // Common set of questions, answer choices, and correct answers
         String[] questions = {
                 "What is a Hasse diagram?",
                 "What is a Lattice?",
@@ -170,6 +172,7 @@ public class Epic {
     }
 
     public static void random(String[] questions, String[][] answerChoices, char[] correctAnswers) {
+        // Code for a random quiz with questions, answer choices, and correct answers
         int score = 0;
         int[] questionOrder = generateRandomOrder(questions.length);
 
@@ -230,6 +233,7 @@ public class Epic {
     }
 
     public static void Speedrun(String[] questions, String[][] answerChoices, char[] correctAnswers) {
+        // Code for a speedrun quiz with questions, answer choices, and correct answers
         int score = 0;
         int[] questionOrder = generateRandomOrder(questions.length);
 
@@ -281,6 +285,7 @@ public class Epic {
 
 
     public static int askQuestions(String[] questions, String[][] answerChoices, char[] correctAnswers) {
+        // Code for asking questions, getting user answers, and calculating the score
         int score = 0;
         for (int i = 0; i < questions.length; i++) {
             System.out.println(questions[i]);

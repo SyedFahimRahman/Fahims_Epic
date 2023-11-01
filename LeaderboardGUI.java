@@ -1,3 +1,5 @@
+package Epic;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -12,6 +14,7 @@ public class LeaderboardGUI {
     private JLabel stdDeviationLabel;
 
     public LeaderboardGUI() {
+        // Create the GUI components
         frame = new JFrame("Quiz Leaderboard");
         tableModel = new DefaultTableModel();
         table = new JTable(tableModel);
@@ -23,6 +26,7 @@ public class LeaderboardGUI {
         medianLabel = new JLabel("Median: ");
         stdDeviationLabel = new JLabel("Std Deviation: ");
 
+        // Set up the layout of the JFrame
         frame.setLayout(new BorderLayout());
         frame.add(new JScrollPane(table), BorderLayout.CENTER);
         frame.add(meanLabel, BorderLayout.PAGE_START);
@@ -51,6 +55,7 @@ public class LeaderboardGUI {
     }
 
     private double[] getScoresArray() {
+        // Extract scores from the JTable and store them in an array
         int rowCount = tableModel.getRowCount();
         double[] scores = new double[rowCount];
 
@@ -62,6 +67,7 @@ public class LeaderboardGUI {
     }
 
     private double calculateMean(double[] scores) {
+        // Calculate the mean of the scores
         double sum = 0;
         for (double score : scores) {
             sum += score;
@@ -70,6 +76,7 @@ public class LeaderboardGUI {
     }
 
     private double calculateMedian(double[] scores) {
+        // Calculate the median of the scores
         Arrays.sort(scores);
         int n = scores.length;
         if (n % 2 == 0) {
@@ -80,6 +87,7 @@ public class LeaderboardGUI {
     }
 
     private double calculateStdDeviation(double[] scores) {
+        // Calculate the standard deviation of the scores
         double mean = calculateMean(scores);
         double sum = 0;
 
@@ -92,6 +100,7 @@ public class LeaderboardGUI {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
+            // Create an instance of LeaderboardGUI
             new LeaderboardGUI();
         });
     }
